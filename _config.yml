@@ -58,7 +58,7 @@ plugins:
 author:
   name   : "Xander Pickering"
   avatar : "/assets/images/bio-photo.jpg"
-  bio    : "21 - Edmonton, AB"
+  bio    : "21 y/o - Edmonton, AB"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
