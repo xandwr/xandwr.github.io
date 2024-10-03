@@ -13,8 +13,8 @@ toc_sticky: true
 
 Recently, a friend of mine sent me the following meme:
 <figure class="half">
-  <a href="/assets/images/lightswitch_vape_meme.webp">
-    <img src="/assets/images/lightswitch_vape_meme.webp">
+  <a href="/assets/images/Projects/Lightswitch Vape/lightswitch_vape_meme.webp">
+    <img src="/assets/images/Projects/Lightswitch Vape/lightswitch_vape_meme.webp">
   </a>
 </figure>
 And since I remain eternally committed-to-the-bit, I decided that it was a grand idea to whip one up myself (albeit not as pretty).
