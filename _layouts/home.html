@@ -1,0 +1,35 @@
+---
+layout: archive
+---
+
+{{ content }}
+
+{% assign welcome_post = site.posts | where: "title", "Welcome!" | first %}
+{% if welcome_post %}
+  <div class="welcome-post">
+    <h1>{{ welcome_post.title }}</h1>
+    <p>{{ welcome_post.excerpt }}</p>
+    <a href="{{ welcome_post.url }}">Read More</a>
+  </div>
+{% endif %}
+
+<hr>
+
+<h2 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h2>
+
+{% if paginator %}
+  {% assign posts = paginator.posts %}
+{% else %}
+  {% assign posts = site.posts %}
+{% endif %}
+
+{% assign entries_layout = page.entries_layout | default: 'list' %}
+<div class="entries-{{ entries_layout }}">
+  {% for post in posts %}
+    {% unless post.title == "Welcome!" %} <!-- Exclude the Welcome post from the recent posts list -->
+      {% include archive-single.html type=entries_layout %}
+    {% endunless %}
+  {% endfor %}
+</div>
+
+{% include paginator.html %}
