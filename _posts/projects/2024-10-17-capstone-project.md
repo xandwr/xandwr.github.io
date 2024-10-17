@@ -12,19 +12,26 @@ share: true
 toc: true
 toc_sticky: true
 ---
-
 ## Concept:
-My capstone project is simple: **I want to connect a real car's instrument cluster up to a video game (particularly *BeamNG.drive*) so I can experience the "thrill" of "racing".** The inspiration was *"I thought it would be cool*", so I absolutely sent it and registered for the capstone program. So here we are!
+My capstone project is simple: **I want to connect a real car's instrument cluster up to a video game (particularly *BeamNG.drive*) so I'm not spending grocery money on a replacement axle.** The inspiration was *"I think this would be cool*", so I absolutely sent it and registered for the capstone program. And here we are now!
 
 Okay, enough yapping. How am I going (and currently trying) to accomplish this?
 ## Project Preparations:
-First, I had to see if this was even doable. So, after some poking around, I discovered that the popular car simulator game *BeamNG.drive* has a modding API with support for CAN Bus data operations. I checked out the logistics, and it seemed pretty straightforward, so I decided to commit to the project and ordered/obtained my supplies:
+First, I had to see if this was even doable. After some poking around, I discovered that the popular car simulator game *BeamNG.drive* has a modding API with support for CAN Bus data operations. I checked out the logistics, and it seemed pretty straightforward, so I decided to commit to the project and ordered/obtained my supplies:
 ### The Instrument Cluster:
-I needed a digital cluster with CAN support to make this happen, so after a short trip to the scrap yard and a couple of hours of guess-and-check later, I managed to scrounge up a 2011 VW Jetta instrument cluster. With no way of knowing whether or not it worked on-site, I took my trophy to the registers and p(r)aid. Thankfully, when I got home and tested it out with my voltage generator, I managed to get it working pretty quickly. So, with that, my primary pain point was over and done with, and I was free to move on to other things.
-### The CAN Interface:
-I didn't realize how expensive these things are. $340 for a USB adapter??? Anyways, my wallet is used to being empty, so I forked it up and waited a few days for my good to arrive. Surely, it came, so I unboxed it and started tinkering around. 
+I needed a digital cluster with CAN support to make this happen, so after a short trip to the scrap yard and a couple of hours of guess-and-check later, I managed to scrounge up a 2011 VW Jetta instrument cluster. With no way of knowing whether or not it worked on-site, I took my trophy to the registers and p(r)aid.
 
-Now in theory, minus some bits and bobs, that should be all of the supplies... so now let's try and make it work!
+Thankfully, when I got home and tested it out with my voltage generator, I managed to get it working pretty quickly. 
+
+With that, my primary pain point was over and done with, and I was free to move on to other things.
+### The CAN Interface:
+I didn't realize how expensive these things are. 
+
+*$340 for a USB adapter???* 
+
+Anyways, my wallet is used to being empty, so I forked it up and waited a few days for my good to arrive. Once it came, I unboxed it and started tinkering around. 
+
+Now in theory, minus some bits and bobs, that should be all of the supplies... now let's try and make it work!
 
 ## The Process:
 Once I had the cluster powered, the first thing I did was attach some m/f jumper cables from the respective ports on my interface to my CAN high/low cables from the cluster.
@@ -84,7 +91,7 @@ But why? Well, here's what those b2 and b3 bits translate to:
 0x2D = 45
 ```
 
-I realized something here--that b3 bit was an angle. A perfectly-correlated 45-degree angle relative to halfway between the bounds of the gauge, which was 3000RPM exactly. So if I set b3 to some angle between 0 and 90 degrees, the tachometer needle will jump to that position.
+I realized something here--*that b3 bit was an angle*. A *perfectly-correlated 45-degree angle* relative to halfway between the bounds of the gauge, which was 3000RPM exactly. So if I set b3 to some angle between 0 and 90 degrees, the tachometer needle will jump to that position.
 
 What a strange way to do things. But it'll have to work. So, to prove my hypothesis, I decided to make the needle sit halfway between 3000RPM and 6000RPM (the max number).
 
